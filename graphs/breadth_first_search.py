@@ -1,19 +1,11 @@
-#!/usr/bin/python
-# encoding=utf8
-
-""" Author: OMKAR PATHAK """
-
-from __future__ import print_function
-
-
-class Graph():
+class Graph:
     def __init__(self):
         self.vertex = {}
 
     # for printing the Graph vertexes
     def printGraph(self):
         for i in self.vertex.keys():
-            print(i,' -> ', ' -> '.join([str(j) for j in self.vertex[i]]))
+            print(i, ' -> ', ' -> '.join([str(j) for j in self.vertex[i]]))
 
     # for adding the edge beween two vertexes
     def addEdge(self, fromVertex, toVertex):
@@ -37,13 +29,14 @@ class Graph():
 
         while queue:
             startVertex = queue.pop(0)
-            print(startVertex, end = ' ')
+            print(startVertex, end=' ')
 
             # mark all adjacent nodes as visited and print them
             for i in self.vertex[startVertex]:
                 if visited[i] == False:
                     queue.append(i)
                     visited[i] = True
+
 
 if __name__ == '__main__':
     g = Graph()
@@ -57,11 +50,3 @@ if __name__ == '__main__':
     g.printGraph()
     print('BFS:')
     g.BFS(2)
-
-    # OUTPUT:
-    # 0  ->  1 -> 2
-    # 1  ->  2
-    # 2  ->  0 -> 3
-    # 3  ->  3
-    # BFS:
-    # 2 0 3 1

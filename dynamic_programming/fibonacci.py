@@ -1,7 +1,6 @@
 """
 This is a pure Python implementation of Dynamic Programming solution to the fibonacci sequence problem.
 """
-from __future__ import print_function
 
 
 class Fibonacci:
@@ -30,7 +29,7 @@ class Fibonacci:
 if __name__ == '__main__':
     print("\n********* Fibonacci Series Using Dynamic Programming ************\n")
     try:
-        raw_input          # Python 2
+        raw_input  # Python 2
     except NameError:
         raw_input = input  # Python 3
 

@@ -5,6 +5,8 @@
 from __future__ import print_function
 import math
 import sys
+
+
 # For storing the vertex set to retreive node with the lowest distance
 
 
@@ -13,7 +15,7 @@ class PriorityQueue:
     def __init__(self):
         self.cur_size = 0
         self.array = []
-        self.pos = {}   # To store the pos of node in array
+        self.pos = {}  # To store the pos of node in array
 
     def isEmpty(self):
         return self.cur_size == 0
@@ -43,7 +45,7 @@ class PriorityQueue:
         min_node = self.array[0][1]
         self.array[0] = self.array[self.cur_size - 1]
         self.cur_size -= 1
-        self.min_heapify(1)
+        self.min_heapify(1)  # 调整 heap
         del self.pos[min_node]
         return min_node
 
@@ -79,8 +81,8 @@ class PriorityQueue:
 
 class Graph:
     def __init__(self, num):
-        self.adjList = {}   # To store graph: u -> (v,w)
-        self.num_nodes = num    # Number of nodes in graph
+        self.adjList = {}  # To store graph: u -> (v,w)
+        self.num_nodes = num  # Number of nodes in graph
         # To store the distance from source vertex
         self.dist = [0] * self.num_nodes
         self.par = [-1] * self.num_nodes  # To store the path

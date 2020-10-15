@@ -1,5 +1,3 @@
-"""pseudo-code"""
-
 """
 BFS(graph G, start vertex s):
 // all nodes initially unexplored
@@ -14,26 +12,26 @@ while Q is non-empty:
 
 """
 
-import collections
-
 
 def bfs(graph, start):
-    explored, queue = set(), [start]  # collections.deque([start])
-    explored.add(start)
+    queue = [start]
+    visited = {}
     while queue:
-        v = queue.pop(0)  # queue.popleft()
-        for w in graph[v]:
-            if w not in explored:
-                explored.add(w)
-                queue.append(w)
-    return explored
+        u = queue.pop(0)
+        visited[u] = None
+        for v in graph[u]:
+            if v not in visited:  # 使用 dict 能判断 v 是否已经添加到候选，即完全是 white 状态
+                queue.append(v)
+    print(list(visited.keys()))
 
 
-G = {'A': ['B', 'C'],
-     'B': ['A', 'D', 'E'],
-     'C': ['A', 'F'],
-     'D': ['B'],
-     'E': ['B', 'F'],
-     'F': ['C', 'E']}
+G = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F'],
+    'D': ['B'],
+    'E': ['B', 'F'],
+    'F': ['C', 'E']
+}
 
-print(bfs(G, 'A'))
+bfs(G, 'A')
